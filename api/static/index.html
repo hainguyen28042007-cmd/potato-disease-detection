@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Tải ảnh lá khoai tây lên để kiểm tra sức khỏe cây trồng."
+    />
+    <title>PotatoCare — Kiểm tra sức khỏe lá khoai tây</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/styles.css" />
+    <script src="/static/app.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="PotatoCare trang chủ">
+        <span class="brand-mark" aria-hidden="true">✳</span>
+        <span>potato<span class="brand-light">care</span></span>
+      </a>
+      <div class="topbar-note"><span class="live-dot"></span> Công cụ hỗ trợ canh tác</div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow"><span></span> CHĂM CÂY TỪ CÁI NHÌN ĐẦU TIÊN</div>
+          <h1>Một chiếc lá khỏe,<br />cả mùa vụ <span>an tâm.</span></h1>
+          <p class="hero-description">
+            Tải ảnh lá khoai tây để AI kiểm tra dấu hiệu bệnh sớm. Nhanh chóng,
+            đơn giản, ngay trên trình duyệt của bạn.
+          </p>
+          <div class="trust-row">
+            <span><b>01</b> Tải ảnh lên</span>
+            <i></i>
+            <span><b>02</b> AI phân tích</span>
+            <i></i>
+            <span><b>03</b> Nhận kết quả</span>
+          </div>
+        </div>
+
+        <section class="checker-card" aria-labelledby="checker-title">
+          <div class="card-heading">
+            <div>
+              <div class="card-kicker">CHẨN ĐOÁN HÌNH ẢNH</div>
+              <h2 id="checker-title">Kiểm tra lá cây</h2>
+            </div>
+            <div class="leaf-icon" aria-hidden="true">✿</div>
+          </div>
+          <p class="card-description">Chọn ảnh rõ nét, nhìn thấy bề mặt lá.</p>
+
+          <label class="upload-area" id="drop-area" for="image-input">
+            <input id="image-input" type="file" accept="image/png,image/jpeg,image/bmp" />
+            <span class="upload-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M12 16V4m0 0L7.5 8.5M12 4l4.5 4.5M5 14.5v3A2.5 2.5 0 0 0 7.5 20h9a2.5 2.5 0 0 0 2.5-2.5v-3" />
+              </svg>
+            </span>
+            <span class="upload-title">Kéo thả ảnh vào đây</span>
+            <span class="upload-subtitle">hoặc <span class="browse-link">chọn từ thiết bị</span></span>
+            <span class="file-hint">JPG, PNG hoặc BMP · Tối đa 10 MB</span>
+          </label>
+
+          <div class="preview hidden" id="preview">
+            <img id="preview-image" alt="Ảnh lá khoai tây đã chọn" />
+            <div class="preview-info">
+              <span class="preview-name" id="preview-name"></span>
+              <span class="preview-size" id="preview-size"></span>
+            </div>
+            <button class="remove-button" id="remove-image" type="button" aria-label="Xóa ảnh">×</button>
+          </div>
+
+          <button class="analyze-button" id="analyze-button" type="button" disabled>
+            <span class="button-label">Phân tích ảnh</span>
+            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M4 10h12m0 0-5-5m5 5-5 5" />
+            </svg>
+          </button>
+          <p class="error-message hidden" id="error-message" role="alert"></p>
+          <p class="privacy-note"><span aria-hidden="true">♧</span> Ảnh của bạn chỉ dùng để phân tích.</p>
+
+          <section class="result hidden" id="result" aria-live="polite">
+            <div class="result-topline">
+              <span class="result-label">KẾT QUẢ PHÂN TÍCH</span>
+              <span class="result-badge" id="result-badge"></span>
+            </div>
+            <h3 id="result-title"></h3>
+            <p class="confidence-copy">Độ tin cậy <strong id="confidence-value"></strong></p>
+            <div class="confidence-track"><span id="confidence-bar"></span></div>
+            <p class="result-disclaimer">
+              Kết quả mang tính tham khảo. Hãy kiểm tra thêm các dấu hiệu thực tế trên cây.
+            </p>
+          </section>
+        </section>
+      </section>
+
+      <section class="info-strip" aria-label="Thông tin về công cụ">
+        <div class="info-item">
+          <span class="info-icon" aria-hidden="true">✳</span>
+          <div><strong>Phát hiện 3 trạng thái</strong><span>Đốm lá sớm, mốc sương và lá khỏe</span></div>
+        </div>
+        <div class="info-item">
+          <span class="info-icon info-icon-leaf" aria-hidden="true">❧</span>
+          <div><strong>Thao tác thật đơn giản</strong><span>Chỉ cần một ảnh chụp chiếc lá</span></div>
+        </div>
+        <div class="info-item">
+          <span class="info-icon info-icon-spark" aria-hidden="true">✧</span>
+          <div><strong>Kết quả trong vài giây</strong><span>AI hỗ trợ bạn kiểm tra nhanh hơn</span></div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>potatocare <span class="footer-dot">·</span> Đồng hành cùng mùa vụ xanh</span>
+      <span class="footer-status"><span class="live-dot"></span> Hệ thống sẵn sàng</span>
+    </footer>
+  </body>
+</html>

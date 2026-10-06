@@ -1,0 +1,11 @@
+**/.venv
+**/__pycache__
+**/*.pyc
+**/*.pyo
+**/*.pyd
+training/PlantVillage
+.git
+.gitignore
+.vscode
+.idea
+.DS_Store

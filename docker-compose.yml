@@ -1,0 +1,9 @@
+services:
+  potato-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: potato-api
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
